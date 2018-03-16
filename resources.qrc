@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/pictures/forToolbar">
+        <file>exit.png</file>
+        <file>minus.png</file>
+        <file>plus.png</file>
+        <file>school.png</file>
+    </qresource>
+</RCC>
