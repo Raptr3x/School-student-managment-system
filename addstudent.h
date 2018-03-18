@@ -2,6 +2,7 @@
 #define ADDSTUDENT_H
 
 #include <QDialog>
+#include <QFileDialog>
 
 namespace Ui {
 class AddStudent;
@@ -23,6 +24,8 @@ private slots:
     bool checkEmail();
 
     bool checkEmpty();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::AddStudent *ui;

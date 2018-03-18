@@ -32,7 +32,7 @@ void ForgotPassword::on_pushButton_clicked()
         QSqlDatabase db;
 
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("D:/Programiranje/c++ projects/Skolski projekti/School_student_managment_system/school.db");
+        db.setDatabaseName("school.db");
         if (db.open()){
             QSqlQuery query;
             query.prepare("SELECT * FROM accounts WHERE email=:email");

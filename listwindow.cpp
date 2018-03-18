@@ -105,7 +105,12 @@ void ListWindow::on_listView_activated(const QModelIndex &index)
             ui->zip->setText(query.value(7).toString());
             ui->phone->setText(query.value(8).toString());
             ui->email->setText(query.value(9).toString());
-            //dodaj sliku ovde jos
+                QByteArray outByteArray = query.value(10).toByteArray();
+                QPixmap image = QPixmap();
+                image.loadFromData(outByteArray);
+            image = image.scaledToWidth(ui->profilePic->width(), Qt::SmoothTransformation);
+            ui->profilePic->setPixmap(image);
+
             //link za sliku: https://www.youtube.com/watch?v=TxjlDTYgoqw
         }
         conn.connClose();

@@ -195,7 +195,7 @@
      <rect>
       <x>540</x>
       <y>310</y>
-      <width>271</width>
+      <width>351</width>
       <height>191</height>
      </rect>
     </property>
@@ -216,7 +216,7 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>251</width>
+       <width>331</width>
        <height>171</height>
       </rect>
      </property>
@@ -325,7 +325,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Zip code:</string>
+           <string>City &amp; Zip code:</string>
           </property>
          </widget>
         </item>
@@ -405,7 +405,7 @@
      <rect>
       <x>540</x>
       <y>510</y>
-      <width>491</width>
+      <width>651</width>
       <height>41</height>
      </rect>
     </property>
@@ -432,7 +432,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="text">
@@ -462,7 +462,7 @@
      <rect>
       <x>540</x>
       <y>560</y>
-      <width>491</width>
+      <width>651</width>
       <height>41</height>
      </rect>
     </property>

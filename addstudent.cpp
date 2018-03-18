@@ -82,7 +82,7 @@ void AddStudent::on_pushButton_clicked()
         MainWindow conn;
         conn.connOpen();
         QSqlQuery query;
-        query.prepare("INSERT INTO students (name,surname,class,classroom,birthDate,adressStreet,adressHouseNum,adressZip,phone,email,fullName) values (:name,:surname,:class,:classroom,:birthDate,:adressStreet,:adressHouseNum,:adressZip,:phone,:email,:fullName)");
+        query.prepare("INSERT INTO students (name,surname,class,classroom,birthDate,adressStreet,adressHouseNum,adressZip,phone,email,picture,fullName) values (:name,:surname,:class,:classroom,:birthDate,:adressStreet,:adressHouseNum,:adressZip,:phone,:email,:picture,:fullName)");
         query.bindValue(":name", name);
         query.bindValue(":surname", lastName);
         query.bindValue(":class", usrClass);
@@ -94,6 +94,22 @@ void AddStudent::on_pushButton_clicked()
         query.bindValue(":phone", phone);
         query.bindValue(":email", email);
         query.bindValue(":fullName", fullName);
+
+        /*  priprema da se uploaduje u database   */
+        QPalette sample_palette;
+        sample_palette.setColor(QPalette::WindowText, Qt::red);
+        ui->email->setPalette(sample_palette);
+        const QPixmap* _image = ui->label_profileImage->pixmap();
+        if (!_image){
+            ui->email->setText("Student image needs to be loaded.");
+        }
+        QImage image(_image->toImage());
+        QByteArray imageInBytes;
+        QBuffer dodatak(&imageInBytes);
+        dodatak.open(QIODevice::WriteOnly);
+        image.save(&dodatak, "PNG");
+        query.bindValue(":picture",imageInBytes);
+
         if(query.exec()){
             QMessageBox::information(this, "Info", "Student successfuly added!");
             hide();
@@ -101,6 +117,28 @@ void AddStudent::on_pushButton_clicked()
         }
         else{
             QMessageBox::information(this, "warning", "Something went wrong.");
+        }
+    }
+}
+
+void AddStudent::on_pushButton_3_clicked()
+{
+    QString file = QFileDialog::getOpenFileName(this, "Browse", "", "images(*.png *.jpg *.jpeg *.bmp *.gif)");
+
+    if(QString::compare(file, QString())!=0){
+        QImage image;
+        bool valid = image.load(file);
+
+        if(valid){
+            image = image.scaledToWidth(ui->label_profileImage->width(), Qt::SmoothTransformation);
+            ui->label_profileImage->setPixmap(QPixmap::fromImage(image));
+            ui->load_image->setText("Image loaded succsessfully.");
+        }
+        else{
+            QPalette sample_palette;
+            sample_palette.setColor(QPalette::WindowText, Qt::red);
+            ui->load_image->setPalette(sample_palette);
+            ui->load_image->setText("Image failed to load.");
         }
     }
 }
