@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>StudentEdit</class>
- <widget class="QDialog" name="StudentEdit">
+ <class>EditStudent</class>
+ <widget class="QDialog" name="EditStudent">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>540</width>
-    <height>652</height>
+    <height>648</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Edit student</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="icons.qrc">
-    <normaloff>:/new/prefix1/school.png</normaloff>:/new/prefix1/school.png</iconset>
+   <string>Dialog</string>
   </property>
   <widget class="QLabel" name="label_profileImage">
    <property name="geometry">
@@ -28,6 +24,37 @@
    </property>
    <property name="frameShape">
     <enum>QFrame::Box</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>110</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Change..</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="imageInfo">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>20</y>
+     <width>351</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -104,7 +131,7 @@
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -116,7 +143,7 @@
      </widget>
     </item>
     <item row="8" column="0">
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="label_7">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -137,7 +164,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_11">
+     <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -149,7 +176,7 @@
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_12">
+     <widget class="QLabel" name="label">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -161,7 +188,7 @@
      </widget>
     </item>
     <item row="12" column="0">
-     <widget class="QLabel" name="label_13">
+     <widget class="QLabel" name="label_9">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -345,7 +372,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="frameShape">
@@ -353,19 +380,6 @@
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>90</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Browse..</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
@@ -381,22 +395,7 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QLabel" name="load_image">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>120</y>
-     <width>281</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Load profile image.</string>
-   </property>
-  </widget>
  </widget>
- <resources>
-  <include location="icons.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

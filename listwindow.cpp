@@ -4,6 +4,7 @@
 #include "studentedit.h"
 #include "addstudent.h"
 #include "removestudent.h"
+#include "studentedit.h".h"
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QtDebug>
@@ -48,8 +49,33 @@ void ListWindow::on_action_Logout_triggered(){
 
 void ListWindow::on_commandLinkButton_2_clicked()
 {
-    StudentEdit *studentedit = new StudentEdit();
-    studentedit->show();
+    studentEdit = new StudentEdit(this);
+    studentEdit->setModal(true);
+    studentEdit->show();
+
+    connect(this, SIGNAL(sendData(QStringList)), studentEdit, SLOT(receiveData(QStringList)));
+
+
+    QStringList ls;
+    ls.append(ui->name->text());
+    ls.append(ui->lastName->text());
+    ls.append(ui->class_2->text());
+    ls.append(ui->classroom->text());
+    ls.append(ui->birth->text());
+    ls.append(ui->street->text());
+    ls.append(ui->houseNum->text());
+    ls.append(ui->zip->text());
+    ls.append(ui->phone->text());
+    ls.append(ui->email->text());
+
+    qDebug()<<(ls);
+
+    emit sendData(ls);
+}
+
+void ListWindow::receiveEditData(QStringList ls){
+    ui->name->setText(ls[0]);
+    ui->lastName->setText(ls[1]);
 }
 
 void ListWindow::on_commandLinkButton_clicked(){
@@ -110,8 +136,6 @@ void ListWindow::on_listView_activated(const QModelIndex &index)
                 image.loadFromData(outByteArray);
             image = image.scaledToWidth(ui->profilePic->width(), Qt::SmoothTransformation);
             ui->profilePic->setPixmap(image);
-
-            //link za sliku: https://www.youtube.com/watch?v=TxjlDTYgoqw
         }
         conn.connClose();
     }else{
@@ -123,4 +147,9 @@ void ListWindow::on_action_RemoveStudent_triggered()
 {
     RemoveStudent *rs = new RemoveStudent();
     rs->show();
+}
+
+void ListWindow::on_actionEdit_Student_triggered()
+{
+
 }

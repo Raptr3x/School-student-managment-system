@@ -111,7 +111,7 @@
      <rect>
       <x>540</x>
       <y>190</y>
-      <width>201</width>
+      <width>241</width>
       <height>41</height>
      </rect>
     </property>
@@ -195,9 +195,15 @@
      <rect>
       <x>540</x>
       <y>310</y>
-      <width>351</width>
+      <width>461</width>
       <height>191</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="minimumSize">
      <size>
@@ -216,7 +222,7 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>331</width>
+       <width>441</width>
        <height>171</height>
       </rect>
      </property>
@@ -361,7 +367,7 @@
    <widget class="QWidget" name="horizontalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>790</x>
       <y>190</y>
       <width>331</width>
       <height>41</height>
@@ -532,6 +538,32 @@
     <property name="icon">
      <iconset resource="icons.qrc">
       <normaloff>:/new/prefix1/reload.png</normaloff>:/new/prefix1/reload.png</iconset>
+    </property>
+   </widget>
+   <widget class="QCommandLinkButton" name="commandLinkButton_2">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>10</y>
+      <width>31</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777211</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="toolTip">
+     <string>Edit</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/new/prefix1/edit.png</normaloff>:/new/prefix1/edit.png</iconset>
     </property>
    </widget>
   </widget>

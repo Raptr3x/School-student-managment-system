@@ -78,6 +78,12 @@ void AddStudent::on_pushButton_clicked()
         ui->email->setPalette(sample_palette);
         ui->email->setText("Email not valid.");
     }
+    else if(ui->label_profileImage->pixmap()==0){
+        QPalette sample_palette;
+        sample_palette.setColor(QPalette::WindowText, Qt::red);
+        ui->email->setPalette(sample_palette);
+        ui->email->setText("Student image needs to be loaded.");
+    }
     else{
         MainWindow conn;
         conn.connOpen();
@@ -100,9 +106,6 @@ void AddStudent::on_pushButton_clicked()
         sample_palette.setColor(QPalette::WindowText, Qt::red);
         ui->email->setPalette(sample_palette);
         const QPixmap* _image = ui->label_profileImage->pixmap();
-        if (!_image){
-            ui->email->setText("Student image needs to be loaded.");
-        }
         QImage image(_image->toImage());
         QByteArray imageInBytes;
         QBuffer dodatak(&imageInBytes);
@@ -116,7 +119,7 @@ void AddStudent::on_pushButton_clicked()
             conn.connClose();
         }
         else{
-            QMessageBox::information(this, "warning", "Something went wrong.");
+            QMessageBox::information(this, "Warning", "Something went wrong.");
         }
     }
 }

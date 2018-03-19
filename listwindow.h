@@ -9,6 +9,7 @@
 #include <QRegularExpression>
 #include <QMessageBox>
 #include "mainwindow.h"
+#include "studentedit.h"
 
 namespace Ui {
 class ListWindow;
@@ -35,8 +36,16 @@ private slots:
 
     void on_action_RemoveStudent_triggered();
 
+    void on_actionEdit_Student_triggered();
+
+    void receiveEditData(QStringList);
+
+signals:
+    void sendData(QStringList);
+
 private:
     Ui::ListWindow *ui;
+    StudentEdit *studentEdit;
     QSqlDatabase db;
 };
 

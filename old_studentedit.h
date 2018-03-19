@@ -18,13 +18,6 @@ public:
 private slots:
     void on_pushButton_2_clicked();
 
-    void on_pushButton_clicked();
-
-    void receiveData(QStringList);
-
-signals:
-    void sendEditData(QStringList);
-
 private:
     Ui::StudentEdit *ui;
 };

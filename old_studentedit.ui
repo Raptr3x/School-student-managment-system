@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
-    <height>652</height>
+    <width>539</width>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,27 +17,11 @@
    <iconset resource="icons.qrc">
     <normaloff>:/new/prefix1/school.png</normaloff>:/new/prefix1/school.png</iconset>
   </property>
-  <widget class="QLabel" name="label_profileImage">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>161</width>
-     <height>131</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Box</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>150</y>
+     <y>130</y>
      <width>521</width>
      <height>451</height>
     </rect>
@@ -75,7 +59,7 @@
        </font>
       </property>
       <property name="text">
-       <string>City, zip code:</string>
+       <string>Zip code:</string>
       </property>
      </widget>
     </item>
@@ -104,7 +88,7 @@
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -116,7 +100,7 @@
      </widget>
     </item>
     <item row="8" column="0">
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="label_7">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -137,7 +121,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_11">
+     <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -149,7 +133,7 @@
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_12">
+     <widget class="QLabel" name="label">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -161,7 +145,7 @@
      </widget>
     </item>
     <item row="12" column="0">
-     <widget class="QLabel" name="label_13">
+     <widget class="QLabel" name="label_9">
       <property name="font">
        <font>
         <pointsize>15</pointsize>
@@ -275,7 +259,7 @@
       </property>
       <property name="maximumSize">
        <size>
-        <width>167772</width>
+        <width>85</width>
         <height>16777215</height>
        </size>
       </property>
@@ -324,8 +308,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>610</y>
+     <x>300</x>
+     <y>590</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -334,64 +318,17 @@
     <string>OK</string>
    </property>
   </widget>
-  <widget class="QLabel" name="email">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>610</y>
-     <width>281</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::NoFrame</enum>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>90</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Browse..</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>610</y>
+     <y>590</y>
      <width>101</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Cancel</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="load_image">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>120</y>
-     <width>281</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Load profile image.</string>
    </property>
   </widget>
  </widget>
