@@ -22,6 +22,12 @@ private slots:
 
     void receiveData(QStringList);
 
+    void on_pushButton_3_clicked();
+
+    bool checkEmail();
+
+    bool checkEmpty();
+
 signals:
     void sendEditData(QStringList);
 

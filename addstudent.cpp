@@ -59,6 +59,9 @@ void AddStudent::on_pushButton_clicked()
     QString classroom = ui->text_classroom->text();
     QDate date = ui->dateEdit->date();
     QString birth = date.toString();
+    QStringList list = birth.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+    list.removeFirst();
+    birth = list.join(" ");
     QString street = ui->text_street->text();
     QString houseNum = ui->text_houseNum->text();
     QString zip = ui->text_zip->text();
@@ -82,7 +85,7 @@ void AddStudent::on_pushButton_clicked()
         QPalette sample_palette;
         sample_palette.setColor(QPalette::WindowText, Qt::red);
         ui->email->setPalette(sample_palette);
-        ui->email->setText("Student image needs to be loaded.");
+        ui->email->setText("Load student image.");
     }
     else{
         MainWindow conn;
@@ -101,7 +104,7 @@ void AddStudent::on_pushButton_clicked()
         query.bindValue(":email", email);
         query.bindValue(":fullName", fullName);
 
-        /*  priprema da se uploaduje u database   */
+        /*  priprema da se uploaduje slika u database   */
         QPalette sample_palette;
         sample_palette.setColor(QPalette::WindowText, Qt::red);
         ui->email->setPalette(sample_palette);

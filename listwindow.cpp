@@ -55,6 +55,8 @@ void ListWindow::on_commandLinkButton_2_clicked()
 
     connect(this, SIGNAL(sendData(QStringList)), studentEdit, SLOT(receiveData(QStringList)));
 
+    connect(studentEdit, SIGNAL(sendEditData(QStringList)), this, SLOT(receiveEditData(QStringList)));
+
 
     QStringList ls;
     ls.append(ui->name->text());
@@ -76,6 +78,14 @@ void ListWindow::on_commandLinkButton_2_clicked()
 void ListWindow::receiveEditData(QStringList ls){
     ui->name->setText(ls[0]);
     ui->lastName->setText(ls[1]);
+    ui->class_2->setText(ls[2]);
+    ui->classroom->setText(ls[3]);
+    ui->birth->setText(ls[4]);
+    ui->street->setText(ls[5]);
+    ui->houseNum->setText(ls[6]);
+    ui->zip->setText(ls[7]);
+    ui->phone->setText(ls[8]);
+    ui->email->setText(ls[9]);
 }
 
 void ListWindow::on_commandLinkButton_clicked(){
@@ -131,9 +141,9 @@ void ListWindow::on_listView_activated(const QModelIndex &index)
             ui->zip->setText(query.value(7).toString());
             ui->phone->setText(query.value(8).toString());
             ui->email->setText(query.value(9).toString());
-                QByteArray outByteArray = query.value(10).toByteArray();
-                QPixmap image = QPixmap();
-                image.loadFromData(outByteArray);
+            QByteArray outByteArray = query.value(10).toByteArray();
+            QPixmap image = QPixmap();
+            image.loadFromData(outByteArray);
             image = image.scaledToWidth(ui->profilePic->width(), Qt::SmoothTransformation);
             ui->profilePic->setPixmap(image);
         }
@@ -147,9 +157,4 @@ void ListWindow::on_action_RemoveStudent_triggered()
 {
     RemoveStudent *rs = new RemoveStudent();
     rs->show();
-}
-
-void ListWindow::on_actionEdit_Student_triggered()
-{
-
 }

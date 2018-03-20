@@ -214,8 +214,29 @@
         <pointsize>15</pointsize>
        </font>
       </property>
+      <property name="maximumDate">
+       <date>
+        <year>2100</year>
+        <month>12</month>
+        <day>31</day>
+       </date>
+      </property>
+      <property name="minimumDate">
+       <date>
+        <year>1910</year>
+        <month>1</month>
+        <day>1</day>
+       </date>
+      </property>
       <property name="displayFormat">
        <string>d/M/yyyy</string>
+      </property>
+      <property name="date">
+       <date>
+        <year>2000</year>
+        <month>2</month>
+        <day>1</day>
+       </date>
       </property>
      </widget>
     </item>
@@ -375,7 +396,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Browse..</string>
+    <string>Browse...</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_profileImage">
