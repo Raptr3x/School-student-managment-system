@@ -14,6 +14,9 @@ class StudentEdit : public QDialog
 public:
     explicit StudentEdit(QWidget *parent = 0);
     ~StudentEdit();
+    QString old_name;
+    QString old_lastName;
+    QString old_email;
 
 private slots:
     void on_pushButton_2_clicked();

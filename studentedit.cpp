@@ -6,8 +6,10 @@
 StudentEdit::StudentEdit(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentEdit)
+
 {
     ui->setupUi(this);
+
 }
 
 StudentEdit::~StudentEdit()
@@ -50,6 +52,7 @@ bool StudentEdit::checkEmpty(){
 
 void StudentEdit::on_pushButton_clicked()
 {
+    //1.
     QStringList ls;
     ls.append(ui->text_name->text());
     ls.append(ui->text_lastName->text());
@@ -61,21 +64,28 @@ void StudentEdit::on_pushButton_clicked()
     ls.append(ui->text_zip->text());
     ls.append(ui->text_phone->text());
     ls.append(ui->text_email->text());
+    const QPixmap* _image = ui->label_profileImage->pixmap();
+    QImage image(_image->toImage());
+    QByteArray send_imageInBytes;
+    QBuffer dodatak(&send_imageInBytes);
+    dodatak.open(QIODevice::WriteOnly);
+    image.save(&dodatak, "PNG");
+    ls.append(send_imageInBytes);
     emit sendEditData(ls);
 
     close();
 
-    QString name = ui->text_name->text();
-    QString lastName = ui->text_lastName->text();
-    QString usrClass = ui->text_class->text();
-    QString classroom = ui->text_classroom->text();
-    QString birth = ui->text_birth->text();
-    QString street = ui->text_street->text();
-    QString houseNum = ui->text_houseNum->text();
-    QString zip = ui->text_zip->text();
-    QString phone = ui->text_phone->text();
-    QString email = ui->text_email->text();
-    QString fullName = name + " " + lastName;
+    QString new_name = ui->text_name->text();
+    QString new_lastName = ui->text_lastName->text();
+    QString new_usrClass = ui->text_class->text();
+    QString new_classroom = ui->text_classroom->text();
+    QString new_birth = ui->text_birth->text();
+    QString new_street = ui->text_street->text();
+    QString new_houseNum = ui->text_houseNum->text();
+    QString new_zip = ui->text_zip->text();
+    QString new_phone = ui->text_phone->text();
+    QString new_email = ui->text_email->text();
+    QString new_fullName = new_name + " " + new_lastName;
 
     if(!checkEmpty()){
         QPalette sample_palette;
@@ -96,34 +106,33 @@ void StudentEdit::on_pushButton_clicked()
         ui->email->setText("Load student image.");
     }
     else{
-
         //adding to db
         MainWindow conn;
         conn.connOpen();
         QSqlQuery query;
-        query.prepare("SELECT * FROM students WHERE name=:name and surname=:surname and class=:class and classroom:classroom and birthDate=:birthDate and adressStreet=:adressStreet and adressHouseNum=:adressHouseNum and adressZip=:adressZip phone=:phone and email=:email and picture=:picture,fullName=:fullName)");
-        query.bindValue(":name", name);
-        query.bindValue(":surname", lastName);
-        query.bindValue(":class", usrClass);
-        query.bindValue(":classroom", classroom);
-        query.bindValue(":birthDate", birth);
-        query.bindValue(":adressStreet", street);
-        query.bindValue(":adressHouseNum", houseNum);
-        query.bindValue(":adressZip", zip);
-        query.bindValue(":phone", phone);
-        query.bindValue(":email", email);
-        query.bindValue(":fullName", fullName);
-
+        query.prepare("UPDATE students SET name=:new_name, surname=:new_surname, class=:new_class, classroom=:new_classroom, birthDate=:new_birthDate, adressStreet=:new_adressStreet, adressHouseNum=:new_adressHouseNum, adressZip=:new_adressZip, phone=:new_phone, email=:new_email, picture=:new_picture, fullName=:new_fullName WHERE email=:email");
+        query.bindValue(":new_name", new_name);
+        query.bindValue(":new_surname", new_lastName);
+        query.bindValue(":new_class", new_usrClass);
+        query.bindValue(":new_classroom", new_classroom);
+        query.bindValue(":new_birthDate", new_birth);
+        query.bindValue(":new_adressStreet", new_street);
+        query.bindValue(":new_adressHouseNum", new_houseNum);
+        query.bindValue(":new_adressZip", new_zip);
+        query.bindValue(":new_phone", new_phone);
+        query.bindValue(":new_email", new_email);
+        query.bindValue(":new_fullName", new_fullName);
         const QPixmap* _image = ui->label_profileImage->pixmap();
         QImage image(_image->toImage());
-        QByteArray imageInBytes;
-        QBuffer dodatak(&imageInBytes);
+        QByteArray new_imageInBytes;
+        QBuffer dodatak(&new_imageInBytes);
         dodatak.open(QIODevice::WriteOnly);
         image.save(&dodatak, "PNG");
-        query.bindValue(":picture",imageInBytes);
+        query.bindValue(":new_picture",new_imageInBytes);
+        query.bindValue(":email",old_email);
 
         if(query.exec()){
-            QMessageBox::information(this, "Info", "Student successfuly added!");
+            QMessageBox::information(this, "Info", "Student information successsfully edited!");
             hide();
             conn.connClose();
         }
@@ -148,6 +157,7 @@ void StudentEdit::receiveData(QStringList ls){
     QString lastName = ui->text_lastName->text();
     QString street = ui->text_street->text();
     QString houseNum = ui->text_houseNum->text();
+    old_email = ui->text_email->text();
     MainWindow conn;
     conn.connOpen();
     QSqlQuery query;

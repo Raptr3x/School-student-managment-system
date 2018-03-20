@@ -4,7 +4,7 @@
 #include "studentedit.h"
 #include "addstudent.h"
 #include "removestudent.h"
-#include "studentedit.h".h"
+#include "studentedit.h"
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QtDebug>
@@ -50,7 +50,6 @@ void ListWindow::on_action_Logout_triggered(){
 void ListWindow::on_commandLinkButton_2_clicked()
 {
     studentEdit = new StudentEdit(this);
-    studentEdit->setModal(true);
     studentEdit->show();
 
     connect(this, SIGNAL(sendData(QStringList)), studentEdit, SLOT(receiveData(QStringList)));
@@ -86,6 +85,7 @@ void ListWindow::receiveEditData(QStringList ls){
     ui->zip->setText(ls[7]);
     ui->phone->setText(ls[8]);
     ui->email->setText(ls[9]);
+    //dodaj za ProfileImage
 }
 
 void ListWindow::on_commandLinkButton_clicked(){
@@ -157,4 +157,8 @@ void ListWindow::on_action_RemoveStudent_triggered()
 {
     RemoveStudent *rs = new RemoveStudent();
     rs->show();
+}
+
+void ListWindow::on_actionEdit_Student_triggered(){
+
 }
