@@ -42,7 +42,7 @@ bool StudentEdit::checkEmpty(){
     QString zip = ui->text_zip->text();
     QString phone = ui->text_phone->text();
     QString email = ui->text_email->text();
-    if(name!="", lastName!="", usrClass!="", classroom!="", birth!="", street!="", houseNum!="", zip!="", phone!="", email!=""){
+    if(name!="" && lastName!="" && usrClass!="" && classroom!="" && birth!="" && street!="" && houseNum!="" && zip!="" && phone!="" && email!=""){
         return true;
     }
     else{
@@ -51,43 +51,7 @@ bool StudentEdit::checkEmpty(){
 }
 
 void StudentEdit::on_pushButton_clicked()
-{
-    //1.
-    QStringList ls;
-    ls.append(ui->text_name->text());
-    ls.append(ui->text_lastName->text());
-    ls.append(ui->text_class->text());
-    ls.append(ui->text_classroom->text());
-    ls.append(ui->text_birth->text());
-    ls.append(ui->text_street->text());
-    ls.append(ui->text_houseNum->text());
-    ls.append(ui->text_zip->text());
-    ls.append(ui->text_phone->text());
-    ls.append(ui->text_email->text());
-    const QPixmap* _image = ui->label_profileImage->pixmap();
-    QImage image(_image->toImage());
-    QByteArray send_imageInBytes;
-    QBuffer dodatak(&send_imageInBytes);
-    dodatak.open(QIODevice::WriteOnly);
-    image.save(&dodatak, "PNG");
-    ls.append(send_imageInBytes);
-    emit sendEditData(ls);
-
-    close();
-
-    QString new_name = ui->text_name->text();
-    QString new_lastName = ui->text_lastName->text();
-    QString new_usrClass = ui->text_class->text();
-    QString new_classroom = ui->text_classroom->text();
-    QString new_birth = ui->text_birth->text();
-    QString new_street = ui->text_street->text();
-    QString new_houseNum = ui->text_houseNum->text();
-    QString new_zip = ui->text_zip->text();
-    QString new_phone = ui->text_phone->text();
-    QString new_email = ui->text_email->text();
-    QString new_fullName = new_name + " " + new_lastName;
-
-    if(!checkEmpty()){
+{   if(!checkEmpty()){
         QPalette sample_palette;
         sample_palette.setColor(QPalette::WindowText, Qt::red);
         ui->email->setPalette(sample_palette);
@@ -106,6 +70,40 @@ void StudentEdit::on_pushButton_clicked()
         ui->email->setText("Load student image.");
     }
     else{
+        QStringList ls;
+        ls.append(ui->text_name->text());
+        ls.append(ui->text_lastName->text());
+        ls.append(ui->text_class->text());
+        ls.append(ui->text_classroom->text());
+        ls.append(ui->text_birth->text());
+        ls.append(ui->text_street->text());
+        ls.append(ui->text_houseNum->text());
+        ls.append(ui->text_zip->text());
+        ls.append(ui->text_phone->text());
+        ls.append(ui->text_email->text());
+        const QPixmap* _image = ui->label_profileImage->pixmap();
+        QImage image(_image->toImage());
+        QByteArray new_imageInBytes;
+        QBuffer dodatak(&new_imageInBytes);
+        dodatak.open(QIODevice::WriteOnly);
+        image.save(&dodatak, "PNG");
+        ls.append(new_imageInBytes);
+
+        emit sendEditData(ls);
+        close();
+
+        QString new_name = ui->text_name->text();
+        QString new_lastName = ui->text_lastName->text();
+        QString new_usrClass = ui->text_class->text();
+        QString new_classroom = ui->text_classroom->text();
+        QString new_birth = ui->text_birth->text();
+        QString new_street = ui->text_street->text();
+        QString new_houseNum = ui->text_houseNum->text();
+        QString new_zip = ui->text_zip->text();
+        QString new_phone = ui->text_phone->text();
+        QString new_email = ui->text_email->text();
+        QString new_fullName = new_name + " " + new_lastName;
+
         //adding to db
         MainWindow conn;
         conn.connOpen();
@@ -122,12 +120,6 @@ void StudentEdit::on_pushButton_clicked()
         query.bindValue(":new_phone", new_phone);
         query.bindValue(":new_email", new_email);
         query.bindValue(":new_fullName", new_fullName);
-        const QPixmap* _image = ui->label_profileImage->pixmap();
-        QImage image(_image->toImage());
-        QByteArray new_imageInBytes;
-        QBuffer dodatak(&new_imageInBytes);
-        dodatak.open(QIODevice::WriteOnly);
-        image.save(&dodatak, "PNG");
         query.bindValue(":new_picture",new_imageInBytes);
         query.bindValue(":email",old_email);
 

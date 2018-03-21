@@ -23,6 +23,7 @@ public:
 private slots:
     void on_button_create_clicked();
     bool CheckEmail();
+    bool CheckEmpty();
     bool CheckUsername();
     void AddUser();
     bool is_email_valid();
