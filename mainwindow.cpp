@@ -2,11 +2,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "createaccount.h"
-#include "forgotpassword.h"
 #include "listwindow.h"
 #include <QMessageBox>
-
-using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,12 +24,7 @@ void MainWindow::on_pushButton_2_clicked()
     cr.exec();
 }
 
-void MainWindow::on_pushButton_3_clicked()
-{
-    ForgotPassword fp;
-    fp.setModal(true);
-    fp.exec();
-}
+void MainWindow::on_pushButton_3_clicked(){}
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -46,7 +38,7 @@ void MainWindow::on_pushButton_clicked()
     connOpen();
     QSqlQuery query;
 
-    //primeniti sha246 enkripciju ovde, pre pretrage u bazi podataka
+    //primeni sha256 enkripciju ovde, pre pretrage u database
 
     query.prepare("SELECT * FROM accounts WHERE username=:user and password=:pass");
     query.bindValue(":user", username);

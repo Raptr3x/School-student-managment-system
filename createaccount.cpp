@@ -141,7 +141,6 @@ void CreateAccount::on_button_create_clicked()
         MainWindow conn;
         conn.connOpen();
         if (conn.connOpen()){
-            ui->label_5->setText("");
             AddUser();
         }
     }

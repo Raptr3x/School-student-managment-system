@@ -21,9 +21,6 @@ ListWindow::ListWindow(QWidget *parent) :
     if(!conn.connOpen()){
         qDebug()<<("Failed to connect!");
     }
-    else{
-        qDebug()<<("Povezano!");
-    }
     QSqlQueryModel * model = new QSqlQueryModel();
     conn.connOpen();
     QSqlQuery* query = new QSqlQuery(conn.db);
@@ -69,8 +66,6 @@ void ListWindow::on_commandLinkButton_2_clicked()
     ls.append(ui->phone->text());
     ls.append(ui->email->text());
 
-    qDebug()<<(ls);
-
     emit sendData(ls);
 }
 
@@ -92,9 +87,6 @@ void ListWindow::on_commandLinkButton_clicked(){
     MainWindow conn;
     if(!conn.connOpen()){
         qDebug()<<("Failed to connect!");
-    }
-    else{
-        qDebug()<<("Povezano!");
     }
     QSqlQueryModel * model = new QSqlQueryModel();
     conn.connOpen();
@@ -120,9 +112,6 @@ void ListWindow::on_listView_activated(const QModelIndex &index)
     MainWindow conn;
     if(!conn.connOpen()){
         qDebug()<<("Failed to connect!");
-    }
-    else{
-        qDebug()<<("Povezano!");
     }
     conn.connOpen();
     QSqlQuery query;
@@ -153,12 +142,9 @@ void ListWindow::on_listView_activated(const QModelIndex &index)
     }
 }
 
-void ListWindow::on_action_RemoveStudent_triggered()
-{
+void ListWindow::on_action_RemoveStudent_triggered(){
     RemoveStudent *rs = new RemoveStudent();
     rs->show();
 }
 
-void ListWindow::on_actionEdit_Student_triggered(){
-
-}
+void ListWindow::on_actionEdit_Student_triggered(){}
